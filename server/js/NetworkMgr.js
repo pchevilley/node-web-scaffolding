@@ -21,12 +21,19 @@ function cNetworkMgr(i_oApplication) {
             name: 'WebApp'
         });
 
-        // gzip compression
-        // m_oServer.use(restify.gzipResponse());
         // query string parser
-
         m_oServer.use(restify.bodyParser());
         m_oServer.use(restify.queryParser());
+
+        // gzip compression
+        if(config.network.enableGZIP) {
+            m_oServer.use(restify.gzipResponse());
+        }
+
+        if(config.network.enableCORS) {
+            m_oServer.use(restify.CORS());
+        }
+
         m_oServer.listen(config.network.server_port);
 
         // handle all file requests, ie: URLs NOT starting with /API/...
