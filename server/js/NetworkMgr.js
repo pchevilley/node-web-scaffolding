@@ -45,7 +45,7 @@ function cNetworkMgr(i_oApplication) {
         m_oServer.put(/^\/API\/(\w+)?(?:\/(.*))?/i, _httpAPIResponse);
         m_oServer.del(/^\/API\/(\w+)?(?:\/(.*))?/i, _httpAPIResponse);
 
-        console.log("NetworkMgr::startServer::Web Server Started.");
+        console.log("NetworkMgr::startServer::Web Server Started http://localhost:" + config.network.server_port + "/");
 
         return m_oServer;
     };
