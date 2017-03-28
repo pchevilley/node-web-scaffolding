@@ -4,6 +4,7 @@
     "description": "scaffolding to start a web application + REST api with Nodejs",
     "main": "main.js",
     "scripts": {
+        "postinstall": "node scripts/postinstall.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "keywords": [
