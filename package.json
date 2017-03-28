@@ -1,16 +1,21 @@
 {
-  "name": "nodewebstartup",
-  "version": "1.0.0",
-  "description": "scaffolding to start a web application + api with nodejs",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "NodeJS",
-    "WebServer",
-    "Scaffolding"
-  ],
-  "author": "Thomas Lanteigne",
-  "license": "MIT"
+    "name": "node-web-scaffolding",
+    "version": "1.0.0",
+    "description": "scaffolding to start a web application + REST api with Nodejs",
+    "main": "main.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "NodeJS",
+        "WebServer",
+        "Restify",
+        "Scaffolding"
+    ],
+    "author": "Thomas Lanteigne",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/boggan/node-web-scaffolding"
+    }
+    "license": "MIT"
 }
