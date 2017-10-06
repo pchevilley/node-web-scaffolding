@@ -88,7 +88,7 @@ function cNetworkMgr(i_oApplication) {
             l_xData = "";
 
         l_oAPIInfos = _extractAPIRequest(l_sURL);
-        m_oApplication.handleAPIRequest(l_oAPIInfos, _onAPIRequestCompleted.bind(m_oInterface, i_oReq, i_oRes, i_oNext));
+        m_oApplication.handleAPIRequest(i_oReq, l_oAPIInfos, _onAPIRequestCompleted.bind(m_oInterface, i_oReq, i_oRes, i_oNext));
     }
 
     //=============================================================================

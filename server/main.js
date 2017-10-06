@@ -1,6 +1,7 @@
 var fs = require('fs'),
     path = require('path'),
-    NetworkMgr = require('./js/NetworkMgr');
+    NetworkMgr = require('./js/NetworkMgr'),
+    APILoader = require('./js/APILoader');
 
 // name application class accordingly
 function cApplication() {
@@ -8,6 +9,8 @@ function cApplication() {
     // Public Methods
     //=============================================================================
     this.start = function() {
+        m_oAPILoader = new APILoader();
+        m_oAPILoader.load();
         m_oNetworkMgr.startServer();
     };
 
@@ -17,21 +20,15 @@ function cApplication() {
     };
 
     //=============================================================================
-    this.handleAPIRequest = function(i_oAPIInfos, i_oCallback) {
+    this.handleAPIRequest = function(i_oRequest, i_oAPIInfos, i_oCallback) {
         var l_sRootRestSection = i_oAPIInfos.restChunks[0];
 
         switch (l_sRootRestSection) {
-            case "section1":
-                _handleAPISection1(i_oAPIInfos, i_oCallback);
-                break;
-            case "section2":
-                _handleAPISection2(i_oAPIInfos, i_oCallback);
-                break;
             case "greetings":
                 _handleGreetings(i_oAPIInfos, i_oCallback);
                 break;
             default:
-                i_oCallback("Unknown API " + JSON.stringify(i_oAPIInfos));
+                m_oAPILoader.process(i_oRequest, i_oAPIInfos, i_oCallback);
         }
     };
 
@@ -74,6 +71,7 @@ function cApplication() {
     // Private Members
     //=============================================================================
     var m_oInterface = this,
+        m_oAPILoader,
         m_oNetworkMgr;
 
     _constructor_();
