@@ -3,8 +3,9 @@ const fs = require('fs');
 // var test = require('../api/User');
 
 class APILoader {
-    constructor(){
+    constructor(db){
         this.apis = {};
+        this.db = db;
     }
 
     load() {
@@ -12,7 +13,7 @@ class APILoader {
             files.forEach(file => {
                 let filename = file.replace('.js', '');
                 let ctor = require('../api/' + filename);
-                this.apis[filename.toLowerCase()] = new ctor();
+                this.apis[filename.toLowerCase()] = new ctor(this.db);
             });
         })
     }
@@ -24,6 +25,7 @@ class APILoader {
         if(l_oAPI){
             l_oAPI[l_sMethod](i_oRequest, i_oAPIInfos, i_oCallback);
         } else {
+            console.error("Invalid API: ", i_oRequest, i_oAPIInfos);
             i_oCallback();
         }
     }

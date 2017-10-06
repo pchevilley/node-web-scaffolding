@@ -5,6 +5,13 @@ const config = {
         enableGZIP: false
     },
 
+    mysql: {
+        host: 'localhost',
+        user: 'nodeapi',
+        password: 'MyAPI',
+        database: 'nodeapi'
+    },
+
     client_web_path: "../client"
 };
 

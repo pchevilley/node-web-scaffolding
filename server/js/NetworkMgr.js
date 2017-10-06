@@ -75,6 +75,8 @@ function cNetworkMgr(i_oApplication) {
             l_aRESTChunks = [];
         }
 
+        l_aRESTChunks = l_aRESTChunks.filter(i_sChunk => i_sChunk);
+        
         return {
             restChunks: l_aRESTChunks,
             query: l_oParsedQuery

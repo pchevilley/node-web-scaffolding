@@ -1,5 +1,8 @@
-var fs = require('fs'),
+var db,
+    fs = require('fs'),
     path = require('path'),
+    mysql = require('mysql'),
+    config = require('./config.js'),
     NetworkMgr = require('./js/NetworkMgr'),
     APILoader = require('./js/APILoader');
 
@@ -9,7 +12,8 @@ function cApplication() {
     // Public Methods
     //=============================================================================
     this.start = function() {
-        m_oAPILoader = new APILoader();
+        db = mysql.createConnection(config.mysql);
+        m_oAPILoader = new APILoader(db);
         m_oAPILoader.load();
         m_oNetworkMgr.startServer();
     };

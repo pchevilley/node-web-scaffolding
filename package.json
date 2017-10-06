@@ -18,5 +18,8 @@
         "type": "git",
         "url": "https://github.com/boggan/node-web-scaffolding"
     },
-    "license": "MIT"
+    "license": "MIT",
+    "dependencies": {
+        "mysql": "^2.15.0"
+    }
 }
